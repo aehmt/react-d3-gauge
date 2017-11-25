@@ -10132,7 +10132,7 @@ var drawGauge = function drawGauge(props) {
 
   width = el[0][0].offsetWidth - margin.left - margin.right;
   height = width;
-  radius = Math.min(width, height) / 2;
+  radius = Math.min(width, height) / 4;
 
   percToDeg = function percToDeg(perc) {
     return perc * 360;
@@ -10167,7 +10167,7 @@ var drawGauge = function drawGauge(props) {
     }
 
     Needle.prototype.drawOn = function (el, perc) {
-      el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', this.radius);
+      el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', 5);
       return el.append('path').style('fill', props.needleColor).attr('class', 'needle').attr('d', this.mkCmd(perc));
     };
 
@@ -10202,13 +10202,15 @@ var drawGauge = function drawGauge(props) {
       leftY = centerY - this.radius * Math.sin(thetaRad - Math.PI / 2);
       rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
       rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
-      return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
+      console.log('M ' + -5 + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + 5 + ' ' + rightY);
+      return 'M ' + -5 + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + 5 + ' ' + rightY;
+      //return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
     };
 
     return Needle;
   }();
 
-  needle = new Needle(height * 0.45 - barWidth, 15);
+  needle = new Needle(height * 0.2 - barWidth, 5);
 
   needle.drawOn(chart, 0);
 
@@ -10250,7 +10252,7 @@ Gauge.defaultProps = {
   barWidth: 40,
   numSections: 3,
   colors: ['#73de2c', '#e9e61a', '#e92213'],
-  needleColor: '#464A4F'
+  needleColor: 'red'
 };
 
 Gauge.propTypes = {
