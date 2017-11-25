@@ -144,7 +144,7 @@ const drawGauge = props => {
     return Needle;
   })();
 
-  needle = new Needle((height * 0.45) - barWidth, 15);
+  needle = new Needle((height * 0.45) - barWidth, 5);
 
   needle.drawOn(chart, 0);
 
