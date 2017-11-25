@@ -172,7 +172,7 @@ Gauge.defaultProps = {
   barWidth: 40,
   numSections: 3,
   colors: ['#73de2c', '#e9e61a', '#e92213'],
-  needleColor: '#464A4F'
+  needleColor: 'red'
 };
 
 Gauge.propTypes = {
