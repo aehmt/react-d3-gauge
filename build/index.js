@@ -10146,7 +10146,7 @@ var drawGauge = function drawGauge(props) {
     return deg * Math.PI / 180;
   };
 
-  svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height / 2 + margin.top + margin.bottom);
+  svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
 
   chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
 
@@ -10174,7 +10174,7 @@ var drawGauge = function drawGauge(props) {
     Needle.prototype.animateOn = function (el, perc) {
       var self = void 0;
       self = this;
-      return el.transition().delay(500).ease('elastic').duration(3000).selectAll('.needle').tween('progress', function () {
+      return el.transition().delay(2000).ease('elastic').duration(3000).selectAll('.needle').tween('progress', function () {
         return function (percentOfPercent) {
           var progress = void 0;
           progress = percentOfPercent * perc;

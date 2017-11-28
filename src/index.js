@@ -65,7 +65,7 @@ const drawGauge = props => {
   svg = el
     .append('svg')
     .attr('width', width + margin.left + margin.right)
-    .attr('height', height / 2 + margin.top + margin.bottom);
+    .attr('height', height + margin.top + margin.bottom);
 
   chart = svg
     .append('g')
@@ -114,7 +114,7 @@ const drawGauge = props => {
       self = this;
       return el
         .transition()
-        .delay(500)
+        .delay(2000)
         .ease('elastic')
         .duration(3000)
         .selectAll('.needle')
