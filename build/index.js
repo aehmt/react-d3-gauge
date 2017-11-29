@@ -10202,7 +10202,7 @@ var drawGauge = function drawGauge(props) {
       leftY = centerY - this.radius * Math.sin(thetaRad - Math.PI / 2);
       rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
       rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
-      return 'M ' + -5 + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + 5 + ' ' + rightY;
+      return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
       //return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
     };
 
