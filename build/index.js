@@ -10236,7 +10236,7 @@ var Gauge = function (_Component) {
       return _react2.default.createElement(
         'span',
         null,
-        _react2.default.createElement('div', { style: { width: this.props.width }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
+        _react2.default.createElement('div', { className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
       );
     }
   }]);
