@@ -48,7 +48,7 @@ const drawGauge = props => {
 
   width = el[0][0].offsetWidth - margin.left - margin.right;
   height = width/2 + width/30;
-  radius = Math.min(width, height) / 4;
+  radius = Math.min(width, height) / 2;
 
   percToDeg = function(perc) {
     return perc * 360;
@@ -101,7 +101,7 @@ const drawGauge = props => {
         .style('fill', props.needleColor)
         .attr('cx', 0)
         .attr('cy', 0)
-        .attr('r', 5);
+        .attr('r', radius);
       return el
         .append('path')
         .style('fill', props.needleColor)

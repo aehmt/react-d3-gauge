@@ -10132,7 +10132,7 @@ var drawGauge = function drawGauge(props) {
 
   width = el[0][0].offsetWidth - margin.left - margin.right;
   height = width / 2 + width / 30;
-  radius = Math.min(width, height) / 4;
+  radius = Math.min(width, height) / 2;
 
   percToDeg = function percToDeg(perc) {
     return perc * 360;
@@ -10167,7 +10167,7 @@ var drawGauge = function drawGauge(props) {
     }
 
     Needle.prototype.drawOn = function (el, perc) {
-      el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', 5);
+      el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', radius);
       return el.append('path').style('fill', props.needleColor).attr('class', 'needle').attr('d', this.mkCmd(perc));
     };
 
