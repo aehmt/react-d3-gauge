@@ -36,7 +36,7 @@ const drawGauge = props => {
   numSections = props.colors.length;
   sectionPerc = 1 / numSections / 2;
   padRad = 0.1 / (numSections - 1);
-  chartInset = 10;
+  chartInset = 0;
   totalPercent = 0.75;
   el = d3.select('.fc822f8a-5edc-41ca-a557-93ec4b5970b7');
   margin = {
