@@ -10124,7 +10124,7 @@ var drawGauge = function drawGauge(props) {
   totalPercent = 0.75;
   el = d3.select('.fc822f8a-5edc-41ca-a557-93ec4b5970b7');
   margin = {
-    top: -width / 3,
+    top: 0,
     right: 0,
     bottom: 0,
     left: 0
@@ -10148,7 +10148,7 @@ var drawGauge = function drawGauge(props) {
 
   svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
 
-  chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
+  chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) + ', ' + (height + margin.top) + ')');
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
