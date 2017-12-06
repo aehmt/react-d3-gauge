@@ -101,7 +101,7 @@ const drawGauge = props => {
         .style('fill', props.needleColor)
         .attr('cx', 0)
         .attr('cy', 0)
-        .attr('r', radius);
+        .attr('r', 5);
       return el
         .append('path')
         .style('fill', props.needleColor)
@@ -129,7 +129,7 @@ const drawGauge = props => {
 
     Needle.prototype.mkCmd = function(perc) {
       let centerX, centerY, leftX, leftY, rightX, rightY, thetaRad, topX, topY;
-      thetaRad = percToRad(perc / 2);
+      thetaRad = percToRad(perc);
       centerX = 0;
       centerY = 0;
       topX = centerX - this.len * Math.cos(thetaRad);
