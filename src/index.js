@@ -159,7 +159,9 @@ class Gauge extends Component {
 
   render() {
     return (
-      <svg className="fc822f8a-5edc-41ca-a557-93ec4b5970b7" />
+      <span>
+        <div style={{width: this.props.width}} className="fc822f8a-5edc-41ca-a557-93ec4b5970b7" />
+      </span>
     );
   }
 }

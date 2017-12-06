@@ -10233,7 +10233,11 @@ var Gauge = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('svg', { className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' });
+      return _react2.default.createElement(
+        'span',
+        null,
+        _react2.default.createElement('div', { style: { width: this.props.width }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
+      );
     }
   }]);
 
