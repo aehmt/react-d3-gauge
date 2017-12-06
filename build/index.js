@@ -10148,7 +10148,7 @@ var drawGauge = function drawGauge(props) {
 
   svg = el.append('svg').attr('width', width / 2 + margin.left + margin.right).attr('height', height / 4 + margin.top + margin.bottom);
 
-  chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
+  chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 4 + ', ' + (height + margin.top) / 4 + ')');
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);

@@ -69,7 +69,7 @@ const drawGauge = props => {
 
   chart = svg
     .append('g')
-    .attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
+    .attr('transform', 'translate(' + (width + margin.left) / 4 + ', ' + (height + margin.top) / 4 + ')');
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
