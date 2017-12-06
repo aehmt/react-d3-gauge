@@ -10211,7 +10211,7 @@ var drawGauge = function drawGauge(props) {
     return Needle;
   }();
 
-  needle = new Needle(height * 0.2 - barWidth, 5);
+  needle = new Needle(height * 0.5 - barWidth, 5);
 
   needle.drawOn(chart, 0);
 
