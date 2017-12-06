@@ -10146,7 +10146,7 @@ var drawGauge = function drawGauge(props) {
     return deg * Math.PI / 180;
   };
 
-  svg = el.append('svg').attr('width', width / 2 + margin.left + margin.right).attr('height', height / 4 + margin.top + margin.bottom);
+  svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height / 2 + margin.top + margin.bottom);
 
   chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 4 + ', ' + (height + margin.top) / 4 + ')');
 
@@ -10236,7 +10236,7 @@ var Gauge = function (_Component) {
       return _react2.default.createElement(
         'span',
         null,
-        _react2.default.createElement('div', { style: { width: this.props.width }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
+        _react2.default.createElement('div', { style: { width: this.props.width / 2 }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
       );
     }
   }]);
@@ -10248,7 +10248,7 @@ Gauge.defaultProps = {
   width: 300,
   height: 300,
   percent: 50,
-  barWidth: 10,
+  barWidth: 20,
   numSections: 3,
   colors: ['#73de2c', '#e9e61a', '#e92213'],
   needleColor: 'red'

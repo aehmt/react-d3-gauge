@@ -64,8 +64,8 @@ const drawGauge = props => {
 
   svg = el
     .append('svg')
-    .attr('width', width/2 + margin.left + margin.right)
-    .attr('height', height/4 + margin.top + margin.bottom);
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height/2 + margin.top + margin.bottom);
 
   chart = svg
     .append('g')
@@ -160,7 +160,7 @@ class Gauge extends Component {
   render() {
     return (
       <span>
-        <div style={{width: this.props.width}} className="fc822f8a-5edc-41ca-a557-93ec4b5970b7" />
+        <div style={{width: this.props.width/2}} className="fc822f8a-5edc-41ca-a557-93ec4b5970b7" />
       </span>
     );
   }
@@ -170,7 +170,7 @@ Gauge.defaultProps = {
   width: 300,
   height: 300,
   percent: 50,
-  barWidth: 10,
+  barWidth: 20,
   numSections: 3,
   colors: ['#73de2c', '#e9e61a', '#e92213'],
   needleColor: 'red'
