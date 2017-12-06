@@ -10132,7 +10132,8 @@ var drawGauge = function drawGauge(props) {
 
   width = el[0][0].offsetWidth - margin.left - margin.right;
   height = width;
-  radius = Math.min(width, height) / 4;
+
+  radius = Math.min(width, height) / 2;
 
   percToDeg = function percToDeg(perc) {
     return perc * 360;
@@ -10146,9 +10147,9 @@ var drawGauge = function drawGauge(props) {
     return deg * Math.PI / 180;
   };
 
-  svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
+  svg = el.append('svg').attr('width', width / 2 + margin.left + margin.right).attr('height', height / 2 + margin.top + margin.bottom);
 
-  chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
+  chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) + ', ' + (height + margin.top) + ')');
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
@@ -10203,7 +10204,6 @@ var drawGauge = function drawGauge(props) {
       rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
       rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
       return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
-      //return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
     };
 
     return Needle;
@@ -10236,7 +10236,7 @@ var Gauge = function (_Component) {
       return _react2.default.createElement(
         'span',
         null,
-        _react2.default.createElement('div', { style: { width: this.props.width }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
+        _react2.default.createElement('div', { style: { width: this.props.width, height: '100px' }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
       );
     }
   }]);
@@ -10245,13 +10245,13 @@ var Gauge = function (_Component) {
 }(_react.Component);
 
 Gauge.defaultProps = {
-  width: 300,
-  height: 300,
+  width: 150,
+  height: 150,
   percent: 50,
   barWidth: 10,
   numSections: 3,
   colors: ['#73de2c', '#e9e61a', '#e92213'],
-  needleColor: 'red'
+  needleColor: 'black'
 };
 
 Gauge.propTypes = {
