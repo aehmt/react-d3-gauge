@@ -131,7 +131,7 @@ const drawGauge = props => {
 
     Needle.prototype.mkCmd = function(perc) {
       let centerX, centerY, leftX, leftY, rightX, rightY, thetaRad, topX, topY;
-      thetaRad = percToRad(perc / 2);
+      thetaRad = percToRad(perc );
       centerX = 0;
       centerY = 0;
       topX = centerX - this.len * Math.cos(thetaRad);
