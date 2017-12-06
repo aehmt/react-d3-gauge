@@ -10124,7 +10124,7 @@ var drawGauge = function drawGauge(props) {
   totalPercent = 0.75;
   el = d3.select('.fc822f8a-5edc-41ca-a557-93ec4b5970b7');
   margin = {
-    top: 0,
+    top: -width / 3,
     right: 0,
     bottom: 0,
     left: 0
