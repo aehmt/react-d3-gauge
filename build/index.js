@@ -10131,8 +10131,8 @@ var drawGauge = function drawGauge(props) {
   };
 
   width = el[0][0].offsetWidth - margin.left - margin.right;
-  height = width / 2 + width / 30;
-  radius = Math.min(width, height) / 2;
+  height = width;
+  radius = Math.min(width, height) / 4;
 
   percToDeg = function percToDeg(perc) {
     return perc * 360;
@@ -10193,7 +10193,7 @@ var drawGauge = function drawGauge(props) {
           thetaRad = void 0,
           topX = void 0,
           topY = void 0;
-      thetaRad = percToRad(perc / 4);
+      thetaRad = percToRad(perc / 2);
       centerX = 0;
       centerY = 0;
       topX = centerX - this.len * Math.cos(thetaRad);

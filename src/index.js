@@ -47,8 +47,8 @@ const drawGauge = props => {
   };
 
   width = el[0][0].offsetWidth - margin.left - margin.right;
-  height = width/2 + width/30;
-  radius = Math.min(width, height) / 2;
+  height = width;
+  radius = Math.min(width, height) / 4;
 
   percToDeg = function(perc) {
     return perc * 360;
@@ -129,7 +129,7 @@ const drawGauge = props => {
 
     Needle.prototype.mkCmd = function(perc) {
       let centerX, centerY, leftX, leftY, rightX, rightY, thetaRad, topX, topY;
-      thetaRad = percToRad(perc / 4);
+      thetaRad = percToRad(perc / 2);
       centerX = 0;
       centerY = 0;
       topX = centerX - this.len * Math.cos(thetaRad);
