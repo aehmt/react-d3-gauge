@@ -10146,7 +10146,7 @@ var drawGauge = function drawGauge(props) {
     return deg * Math.PI / 180;
   };
 
-  svg = el.append('svg').attr('width', width / 2 + margin.left + margin.right).attr('height', height / 2 + margin.top + margin.bottom);
+  svg = el.append('svg').attr('width', width / 2 + margin.left + margin.right).attr('height', height / 4 + margin.top + margin.bottom);
 
   chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
 

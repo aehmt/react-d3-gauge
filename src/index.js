@@ -65,7 +65,7 @@ const drawGauge = props => {
   svg = el
     .append('svg')
     .attr('width', width/2 + margin.left + margin.right)
-    .attr('height', height/2 + margin.top + margin.bottom);
+    .attr('height', height/4 + margin.top + margin.bottom);
 
   chart = svg
     .append('g')
