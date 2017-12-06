@@ -139,7 +139,6 @@ const drawGauge = props => {
       rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
       rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
       return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
-      //return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
     };
 
     return Needle;
@@ -167,8 +166,8 @@ class Gauge extends Component {
 }
 
 Gauge.defaultProps = {
-  width: 300,
-  height: 300,
+  width: 150,
+  height: 150,
   percent: 50,
   barWidth: 10,
   numSections: 3,
