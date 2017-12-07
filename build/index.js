@@ -10176,7 +10176,7 @@ var drawGauge = function drawGauge(props) {
     Needle.prototype.animateOn = function (el, perc) {
       var self = void 0;
       self = this;
-      return el.transition().delay(2000).ease('elastic').duration(9000).selectAll('.needle').tween('progress', function () {
+      return el.transition().delay(6000).ease('elastic').duration(10000).selectAll('.needle').tween('progress', function () {
         return function (percentOfPercent) {
           var progress = void 0;
           progress = percentOfPercent * perc;

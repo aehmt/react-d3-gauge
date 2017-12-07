@@ -116,9 +116,9 @@ const drawGauge = props => {
       self = this;
       return el
         .transition()
-        .delay(2000)
+        .delay(6000)
         .ease('elastic')
-        .duration(9000)
+        .duration(10000)
         .selectAll('.needle')
         .tween('progress', function() {
           return function(percentOfPercent) {
