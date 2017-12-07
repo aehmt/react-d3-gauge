@@ -10169,7 +10169,7 @@ var drawGauge = function drawGauge(props) {
     }
 
     Needle.prototype.drawOn = function (el, perc) {
-      el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', 5);
+      el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', 2);
       return el.append('path').style('fill', props.needleColor).attr('class', 'needle').attr('d', this.mkCmd(perc));
     };
 
