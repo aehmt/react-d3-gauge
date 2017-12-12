@@ -103,7 +103,7 @@ const drawGauge = props => {
         .style('fill', props.needleColor)
         .attr('cx', 0)
         .attr('cy', 0)
-        .attr('r', 2);
+        .attr('r', radius1);
       return el
         .append('path')
         .style('fill', props.needleColor)
