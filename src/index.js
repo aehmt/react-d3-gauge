@@ -53,7 +53,7 @@ const drawGauge = props => {
   // width = el[0][0].offsetWidth - margin.left - margin.right;
   width = props.width;
   height = width;
-  radius = Math.min(width, height) / 2;
+  radius = Math.min(width, height);
 
   percToDeg = function(perc) {
     return perc * 360;
