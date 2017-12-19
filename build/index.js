@@ -10158,7 +10158,7 @@ var drawGauge = function drawGauge(props) {
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
     arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx - 1]);
-    totalPercent += sectionPerc;
+    totalPercent += sectionPerc[sectionIndx - 1];
     startPadRad = sectionIndx === 0 ? 0 : padRad / 2;
     endPadRad = sectionIndx === numSections ? 0 : padRad / 2;
     arc = d3.svg.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth).startAngle(arcStartRad + startPadRad).endAngle(arcEndRad - endPadRad);
@@ -10253,7 +10253,7 @@ Gauge.defaultProps = {
   height: 300,
   percent: 50,
   barWidth: 20,
-  areaRatios: [1.5 / 3, 0.5 / 3, 1 / 3],
+  areaRatios: [1.5 / 6, 0.5 / 6, 1 / 6],
   colors: ['#d6d9ea', '#f9c877', '#69b857'],
   needleColor: 'red'
 };
