@@ -10151,7 +10151,7 @@ var drawGauge = function drawGauge(props) {
     return deg * Math.PI / 180;
   };
 
-  svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height / 2 + margin.top + margin.bottom);
+  svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
 
   chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
 
@@ -10250,7 +10250,7 @@ var Gauge = function (_Component) {
 
 Gauge.defaultProps = {
   width: 300,
-  height: 300,
+  height: 150,
   percent: 50,
   barWidth: 20,
   areaRatios: [1.5 / 3, 0.5 / 3, 1 / 3],

@@ -70,7 +70,7 @@ const drawGauge = props => {
   svg = el
     .append('svg')
     .attr('width', width + margin.left + margin.right)
-    .attr('height', height/2 + margin.top + margin.bottom);
+    .attr('height', height + margin.top + margin.bottom);
 
   chart = svg
     .append('g')
@@ -172,7 +172,7 @@ class Gauge extends Component {
 
 Gauge.defaultProps = {
   width: 300,
-  height: 300,
+  height: 150,
   percent: 50,
   barWidth: 20,
   areaRatios: [1.5/3, 0.5/3, 1/3],
