@@ -53,7 +53,7 @@ const drawGauge = props => {
   // width = el[0][0].offsetWidth - margin.left - margin.right;
   width = props.width;
   height = width;
-  radius = Math.min(width, height);
+  radius = Math.min(width, height) / 2;
 
   percToDeg = function(perc) {
     return perc * 360;
@@ -70,11 +70,11 @@ const drawGauge = props => {
   svg = el
     .append('svg')
     .attr('width', width + margin.left + margin.right)
-    .attr('height', props.height || height/2 + margin.top + margin.bottom);
+    .attr('height', height/2 + margin.top + margin.bottom);
 
   chart = svg
     .append('g')
-    .attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + props.height || ((height + margin.top) / 2) + ')');
+    .attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
