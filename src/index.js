@@ -33,7 +33,7 @@ const drawGauge = props => {
 
   percent = props.percent / 100;
   barWidth = props.barWidth;
-  numSections = 3;
+  numSections = props.colors.length;
 
   // sectionPerc = 1 / numSections / 2;
 
@@ -176,8 +176,8 @@ Gauge.defaultProps = {
   percent: 50,
   barWidth: 20,
   areaRatios: [1.5/3, 0.5/3, 1/3],
-  colors: ['#d6d9ea', '#f9c877', '#69b857'],
-  needleColor: 'red'
+  colors: ['#69b857'],
+  needleColor: '#00000000'
 };
 
 Gauge.propTypes = {
