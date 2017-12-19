@@ -10213,11 +10213,11 @@ var drawGauge = function drawGauge(props) {
     return Needle;
   }();
 
-  needle = new Needle(height * 0.5 - barWidth, 5);
-
-  needle.drawOn(chart, 0);
-
-  needle.animateOn(chart, percent);
+  if (props.needle) {
+    needle = new Needle(height * 0.5 - barWidth, 5);
+    needle.drawOn(chart, 0);
+    needle.animateOn(chart, percent);
+  }
 };
 
 var Gauge = function (_Component) {
@@ -10253,9 +10253,10 @@ Gauge.defaultProps = {
   height: 150,
   percent: 50,
   barWidth: 20,
-  areaRatios: [6 / 3],
-  colors: ['#69b857'],
-  needleColor: '#00000000'
+  needle: true,
+  areaRatios: [1.5 / 3, 0.5 / 3, 1 / 3],
+  colors: ['#d6d9ea', '#f9c877', '#69b857'],
+  needleColor: 'red'
 };
 
 Gauge.propTypes = {
@@ -10265,7 +10266,8 @@ Gauge.propTypes = {
   barWidth: _propTypes2.default.number,
   areaRatios: _propTypes2.default.array,
   colors: _propTypes2.default.array,
-  needleColor: _propTypes2.default.string
+  needleColor: _propTypes2.default.string,
+  needle: _propTypes2.default.boolean
 };
 
 exports.default = Gauge;
