@@ -70,11 +70,11 @@ const drawGauge = props => {
   svg = el
     .append('svg')
     .attr('width', width + margin.left + margin.right)
-    .attr('height', height/2 + margin.top + margin.bottom);
+    .attr('height', props.height || height/2 + margin.top + margin.bottom);
 
   chart = svg
     .append('g')
-    .attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
+    .attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + props.height || ((height + margin.top) / 2) + ')');
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
