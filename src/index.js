@@ -78,7 +78,7 @@ const drawGauge = props => {
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
-    arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx]/2);
+    arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx-1]);
     totalPercent += sectionPerc;
     startPadRad = sectionIndx === 0 ? 0 : padRad / 2;
     endPadRad = sectionIndx === numSections ? 0 : padRad / 2;
