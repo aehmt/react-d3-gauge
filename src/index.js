@@ -33,8 +33,12 @@ const drawGauge = props => {
 
   percent = props.percent / 100;
   barWidth = props.barWidth;
-  numSections = props.colors.length;
-  sectionPerc = 1 / numSections / 2;
+  numSections = 3;
+
+  // sectionPerc = 1 / numSections / 2;
+
+  sectionPerc = props.areaRatios; 
+
   padRad = 0 / (numSections - 1);
   chartInset = 10;
   totalPercent = 0.75;
@@ -48,7 +52,6 @@ const drawGauge = props => {
 
   // width = el[0][0].offsetWidth - margin.left - margin.right;
   width = props.width;
-  console.log(width);
   height = width;
   radius = Math.min(width, height) / 2;
 
@@ -75,7 +78,7 @@ const drawGauge = props => {
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
-    arcEndRad = arcStartRad + percToRad(sectionPerc);
+    arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx-1]/2);
     totalPercent += sectionPerc;
     startPadRad = sectionIndx === 0 ? 0 : padRad / 2;
     endPadRad = sectionIndx === numSections ? 0 : padRad / 2;
@@ -173,7 +176,7 @@ Gauge.defaultProps = {
   height: 300,
   percent: 50,
   barWidth: 20,
-  numSections: 3,
+  areaRatios: [1.5/3, 0.5/3, 1/3],
   colors: ['#73de2c', '#e9e61a', '#e92213'],
   needleColor: 'red'
 };
@@ -183,7 +186,7 @@ Gauge.propTypes = {
   height: PropTypes.number,
   percent: PropTypes.number,
   barWidth: PropTypes.number,
-  numSections: PropTypes.number,
+  areaRatios: PropTypes.array,
   colors: PropTypes.array,
   needleColor: PropTypes.string
 };
