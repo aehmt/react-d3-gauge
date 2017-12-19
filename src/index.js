@@ -78,7 +78,7 @@ const drawGauge = props => {
 
   for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
     arcStartRad = percToRad(totalPercent);
-    arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx-1]/2);
+    arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx]/2);
     totalPercent += sectionPerc;
     startPadRad = sectionIndx === 0 ? 0 : padRad / 2;
     endPadRad = sectionIndx === numSections ? 0 : padRad / 2;
@@ -144,7 +144,6 @@ const drawGauge = props => {
       rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
       rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
       return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
-      //return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
     };
 
     return Needle;
@@ -177,7 +176,7 @@ Gauge.defaultProps = {
   percent: 50,
   barWidth: 20,
   areaRatios: [1.5/3, 0.5/3, 1/3],
-  colors: ['#73de2c', '#e9e61a', '#e92213'],
+  colors: ['#d6d9ea', '#f9c877', '#69b857'],
   needleColor: 'red'
 };
 
