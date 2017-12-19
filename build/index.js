@@ -10253,7 +10253,7 @@ Gauge.defaultProps = {
   height: 150,
   percent: 50,
   barWidth: 20,
-  areaRatios: [1.5 / 3, 0.5 / 3, 1 / 3],
+  areaRatios: [6 / 3],
   colors: ['#69b857'],
   needleColor: '#00000000'
 };
