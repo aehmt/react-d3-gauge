@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
-const randomId = Math.random()
-
 
 class Gauge extends Component {
   constructor(props) {
     super(props);
+
+    const x = () => {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (var i = 0; i < 5; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    }
+    const key = x()
+
     this.state = {
-      key: Math.random().toString().split('.')[1]
+      key: key 
     }
   }
 
@@ -53,7 +62,7 @@ class Gauge extends Component {
     padRad = 0 / (numSections - 1);
     chartInset = 10;
     totalPercent = 0.75;
-    el = d3.select(key);
+    el = d3.select(this.state.key);
     margin = {
       top: 10,
       right: 0,

@@ -10086,8 +10086,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var randomId = Math.random();
-
 var Gauge = function (_Component) {
   _inherits(Gauge, _Component);
 
@@ -10096,8 +10094,18 @@ var Gauge = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Gauge.__proto__ || Object.getPrototypeOf(Gauge)).call(this, props));
 
+    var x = function x() {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for (var i = 0; i < 5; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    };
+    var key = x();
+
     _this.state = {
-      key: Math.random().toString().split('.')[1]
+      key: key
     };
     return _this;
   }
@@ -10144,7 +10152,7 @@ var Gauge = function (_Component) {
       padRad = 0 / (numSections - 1);
       chartInset = 10;
       totalPercent = 0.75;
-      el = d3.select(key);
+      el = d3.select(this.state.key);
       margin = {
         top: 10,
         right: 0,
