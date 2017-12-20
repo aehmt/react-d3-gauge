@@ -22,7 +22,7 @@ class Gauge extends Component {
   }
 
 
-  drawGauge(props, key) {
+  drawGauge(props,key) {
     let Needle,
       arc,
       arcEndRad,
@@ -62,7 +62,7 @@ class Gauge extends Component {
     padRad = 0 / (numSections - 1);
     chartInset = 10;
     totalPercent = 0.75;
-    el = d3.select(this.state.key);
+    el = d3.select(key);
     margin = {
       top: 10,
       right: 0,
@@ -174,7 +174,7 @@ class Gauge extends Component {
       needle.drawOn(chart, 0);
       needle.animateOn(chart, percent);
     }
-  };
+  }
 
   componentDidMount() {
     this.drawGauge(this.props);
