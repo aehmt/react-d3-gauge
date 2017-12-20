@@ -10283,7 +10283,7 @@ Gauge.propTypes = {
   areaRatios: _propTypes2.default.array,
   colors: _propTypes2.default.array,
   needleColor: _propTypes2.default.string,
-  needle: _propTypes2.default.boolean
+  needle: _propTypes2.default.bool
 };
 
 exports.default = Gauge;

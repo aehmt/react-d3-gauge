@@ -208,7 +208,7 @@ Gauge.propTypes = {
   areaRatios: PropTypes.array,
   colors: PropTypes.array,
   needleColor: PropTypes.string,
-  needle: PropTypes.boolean
+  needle: PropTypes.bool,
 };
 
 export default Gauge;
