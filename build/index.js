@@ -10268,7 +10268,7 @@ var Gauge = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var gauge = new drawGauge(this.props, this.state.key);
-      drawGauge.draw;
+      drawGauge.draw();
     }
   }, {
     key: 'render',
