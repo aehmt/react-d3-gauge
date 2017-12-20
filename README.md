@@ -6,3 +6,4 @@ Extended the example of Jake Trent from https://codepen.io/jaketrent/.
 #INSTALLATION and USAGE
 
 > npm install -save react-d3-gauge
+https://raw.githubusercontent.com/aehmt/react-d3-gauge/master/Screen%20Shot%202017-12-20%20at%201.22.58%20PM.png
