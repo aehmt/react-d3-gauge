@@ -10266,16 +10266,22 @@ var Gauge = function (_Component) {
   _createClass(Gauge, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var gauge = new drawGauge(this.props, this.state.key);
+      var props = this.props;
+      var key = this.state.key;
+
+      var gauge = new drawGauge(props, key);
       gauge.draw();
     }
   }, {
     key: 'render',
     value: function render() {
+      var key = this.state.key;
+      var width = this.props.width;
+
       return _react2.default.createElement(
         'span',
         null,
-        _react2.default.createElement('div', { style: { width: this.props.width, display: 'inline' }, className: this.state.key })
+        _react2.default.createElement('div', { style: { width: width, display: 'inline' }, className: key })
       );
     }
   }]);

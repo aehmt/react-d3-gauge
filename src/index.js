@@ -185,14 +185,18 @@ class Gauge extends Component {
   }
 
   componentDidMount() {
-    let gauge = new drawGauge(this.props,this.state.key);
+    const { props } = this
+    const { key } = this.state
+    let gauge = new drawGauge(props, key);
     gauge.draw()
   }
 
   render() {
+    const { key } = this.state;
+    const { width } = this.props;
     return (
       <span>
-        <div style={{width: this.props.width, display: 'inline'}} className={this.state.key} />
+        <div style={{width: width, display: 'inline'}} className={key} />
       </span>
     );
   }
