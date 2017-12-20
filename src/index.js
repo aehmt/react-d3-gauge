@@ -185,8 +185,8 @@ class Gauge extends Component {
   }
 
   componentDidMount() {
-    const gauge = new drawGauge(this.props,this.state.key);
-    drawGauge.draw()
+    let gauge = new drawGauge(this.props,this.state.key);
+    gauge.draw()
   }
 
   render() {
