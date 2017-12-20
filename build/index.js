@@ -10086,6 +10086,140 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var drawGauge = function drawGauge(props, key) {
+  var Needle = void 0,
+      arc = void 0,
+      arcEndRad = void 0,
+      arcStartRad = void 0,
+      barWidth = void 0,
+      chart = void 0,
+      chartInset = void 0,
+      degToRad = void 0,
+      el = void 0,
+      endPadRad = void 0,
+      height = void 0,
+      i = void 0,
+      margin = void 0,
+      needle = void 0,
+      numSections = void 0,
+      padRad = void 0,
+      percToDeg = void 0,
+      percToRad = void 0,
+      percent = void 0,
+      radius = void 0,
+      ref = void 0,
+      sectionIndx = void 0,
+      sectionPerc = void 0,
+      startPadRad = void 0,
+      svg = void 0,
+      totalPercent = void 0,
+      width = void 0;
+
+  percent = props.percent / 100;
+  barWidth = props.barWidth;
+  numSections = props.colors.length;
+
+  // sectionPerc = 1 / numSections / 2;
+
+  sectionPerc = props.areaRatios;
+
+  padRad = 0 / (numSections - 1);
+  chartInset = 10;
+  totalPercent = 0.75;
+  el = d3.select(key);
+  margin = {
+    top: 10,
+    right: 0,
+    bottom: 0,
+    left: 0
+  };
+
+  // width = el[0][0].offsetWidth - margin.left - margin.right;
+  width = props.width;
+  height = width;
+  radius = Math.min(width, height) / 2;
+
+  percToDeg = function percToDeg(perc) {
+    return perc * 360;
+  };
+
+  percToRad = function percToRad(perc) {
+    return degToRad(percToDeg(perc));
+  };
+
+  degToRad = function degToRad(deg) {
+    return deg * Math.PI / 180;
+  };
+
+  svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
+
+  chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
+
+  for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
+    arcStartRad = percToRad(totalPercent);
+    arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx - 1] / 2);
+    totalPercent += sectionPerc[sectionIndx - 1] / 2;
+    startPadRad = sectionIndx === 0 ? 0 : padRad / 2;
+    endPadRad = sectionIndx === numSections ? 0 : padRad / 2;
+    arc = d3.svg.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth).startAngle(arcStartRad + startPadRad).endAngle(arcEndRad - endPadRad);
+    chart.append('path').style('fill', props.colors[sectionIndx - 1]).attr('d', arc);
+  }
+
+  Needle = function () {
+    function Needle(len, radius1) {
+      this.len = len;
+      this.radius = radius1;
+    }
+
+    Needle.prototype.drawOn = function (el, perc) {
+      el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', this.radius);
+      return el.append('path').style('fill', props.needleColor).attr('class', 'needle').attr('d', this.mkCmd(perc));
+    };
+
+    Needle.prototype.animateOn = function (el, perc) {
+      var self = void 0;
+      self = this;
+      return el.transition().delay(6000).ease('elastic').duration(10000).selectAll('.needle').tween('progress', function () {
+        return function (percentOfPercent) {
+          var progress = void 0;
+          progress = percentOfPercent * perc;
+          return d3.select(this).attr('d', self.mkCmd(progress));
+        };
+      });
+    };
+
+    Needle.prototype.mkCmd = function (perc) {
+      var centerX = void 0,
+          centerY = void 0,
+          leftX = void 0,
+          leftY = void 0,
+          rightX = void 0,
+          rightY = void 0,
+          thetaRad = void 0,
+          topX = void 0,
+          topY = void 0;
+      thetaRad = percToRad(perc / 2);
+      centerX = 0;
+      centerY = 0;
+      topX = centerX - this.len * Math.cos(thetaRad);
+      topY = centerY - this.len * Math.sin(thetaRad);
+      leftX = centerX - this.radius * Math.cos(thetaRad - Math.PI / 2);
+      leftY = centerY - this.radius * Math.sin(thetaRad - Math.PI / 2);
+      rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
+      rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
+      return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
+    };
+
+    return Needle;
+  }();
+
+  if (props.needle) {
+    needle = new Needle(height * 0.5 - barWidth, 5);
+    needle.drawOn(chart, 0);
+    needle.animateOn(chart, percent);
+  }
+};
+
 var Gauge = function (_Component) {
   _inherits(Gauge, _Component);
 
@@ -10113,141 +10247,6 @@ var Gauge = function (_Component) {
   _createClass(Gauge, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-
-      var drawGauge = function drawGauge(props, key) {
-        var Needle = void 0,
-            arc = void 0,
-            arcEndRad = void 0,
-            arcStartRad = void 0,
-            barWidth = void 0,
-            chart = void 0,
-            chartInset = void 0,
-            degToRad = void 0,
-            el = void 0,
-            endPadRad = void 0,
-            height = void 0,
-            i = void 0,
-            margin = void 0,
-            needle = void 0,
-            numSections = void 0,
-            padRad = void 0,
-            percToDeg = void 0,
-            percToRad = void 0,
-            percent = void 0,
-            radius = void 0,
-            ref = void 0,
-            sectionIndx = void 0,
-            sectionPerc = void 0,
-            startPadRad = void 0,
-            svg = void 0,
-            totalPercent = void 0,
-            width = void 0;
-
-        percent = props.percent / 100;
-        barWidth = props.barWidth;
-        numSections = props.colors.length;
-
-        // sectionPerc = 1 / numSections / 2;
-
-        sectionPerc = props.areaRatios;
-
-        padRad = 0 / (numSections - 1);
-        chartInset = 10;
-        totalPercent = 0.75;
-        el = d3.select('.fc822f8a-5edc-41ca-a557-93ec4b5970b7');
-        margin = {
-          top: 10,
-          right: 0,
-          bottom: 0,
-          left: 0
-        };
-
-        // width = el[0][0].offsetWidth - margin.left - margin.right;
-        width = props.width;
-        height = width;
-        radius = Math.min(width, height) / 2;
-
-        percToDeg = function percToDeg(perc) {
-          return perc * 360;
-        };
-
-        percToRad = function percToRad(perc) {
-          return degToRad(percToDeg(perc));
-        };
-
-        degToRad = function degToRad(deg) {
-          return deg * Math.PI / 180;
-        };
-
-        svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
-
-        chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ', ' + (height + margin.top) / 2 + ')');
-
-        for (sectionIndx = i = 1, ref = numSections; 1 <= ref ? i <= ref : i >= ref; sectionIndx = 1 <= ref ? ++i : --i) {
-          arcStartRad = percToRad(totalPercent);
-          arcEndRad = arcStartRad + percToRad(sectionPerc[sectionIndx - 1] / 2);
-          totalPercent += sectionPerc[sectionIndx - 1] / 2;
-          startPadRad = sectionIndx === 0 ? 0 : padRad / 2;
-          endPadRad = sectionIndx === numSections ? 0 : padRad / 2;
-          arc = d3.svg.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth).startAngle(arcStartRad + startPadRad).endAngle(arcEndRad - endPadRad);
-          chart.append('path').style('fill', props.colors[sectionIndx - 1]).attr('d', arc);
-        }
-
-        Needle = function () {
-          function Needle(len, radius1) {
-            this.len = len;
-            this.radius = radius1;
-          }
-
-          Needle.prototype.drawOn = function (el, perc) {
-            el.append('circle').style('fill', props.needleColor).attr('cx', 0).attr('cy', 0).attr('r', this.radius);
-            return el.append('path').style('fill', props.needleColor).attr('class', 'needle').attr('d', this.mkCmd(perc));
-          };
-
-          Needle.prototype.animateOn = function (el, perc) {
-            var self = void 0;
-            self = this;
-            return el.transition().delay(6000).ease('elastic').duration(10000).selectAll('.needle').tween('progress', function () {
-              return function (percentOfPercent) {
-                var progress = void 0;
-                progress = percentOfPercent * perc;
-                return d3.select(this).attr('d', self.mkCmd(progress));
-              };
-            });
-          };
-
-          Needle.prototype.mkCmd = function (perc) {
-            var centerX = void 0,
-                centerY = void 0,
-                leftX = void 0,
-                leftY = void 0,
-                rightX = void 0,
-                rightY = void 0,
-                thetaRad = void 0,
-                topX = void 0,
-                topY = void 0;
-            thetaRad = percToRad(perc / 2);
-            centerX = 0;
-            centerY = 0;
-            topX = centerX - this.len * Math.cos(thetaRad);
-            topY = centerY - this.len * Math.sin(thetaRad);
-            leftX = centerX - this.radius * Math.cos(thetaRad - Math.PI / 2);
-            leftY = centerY - this.radius * Math.sin(thetaRad - Math.PI / 2);
-            rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
-            rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
-            return 'M ' + leftX + ' ' + leftY + ' L ' + topX + ' ' + topY + ' L ' + rightX + ' ' + rightY;
-          };
-
-          return Needle;
-        }();
-
-        if (props.needle) {
-          needle = new Needle(height * 0.5 - barWidth, 5);
-          needle.drawOn(chart, 0);
-          needle.animateOn(chart, percent);
-        }
-      };
-
       drawGauge(this.props, this.state.key);
     }
   }, {
