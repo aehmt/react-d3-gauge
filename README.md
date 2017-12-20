@@ -7,8 +7,5 @@ Extended the example of Jake Trent from https://codepen.io/jaketrent/.
 
 > npm install -- save https://github.com/aehmt/react-d3-gauge.git
 
-
-
-<br />
 ![Gauges](https://raw.githubusercontent.com/aehmt/react-d3-gauge/master/Screen%20Shot%202017-12-20%20at%201.22.58%20PM.png)
 
