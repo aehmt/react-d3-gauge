@@ -36,8 +36,8 @@ class drawGauge {
       totalPercent,
       width;
     
-    const { props } = this.props;
-    const { key } = this.key;
+    const props = this.props;
+    const key = this.key;
 
     percent = props.percent / 100;
     barWidth = props.barWidth;

@@ -10125,9 +10125,8 @@ var drawGauge = function () {
           totalPercent = void 0,
           width = void 0;
 
-      var props = this.props.props;
-      var key = this.key.key;
-
+      var props = this.props;
+      var key = this.key;
 
       percent = props.percent / 100;
       barWidth = props.barWidth;
