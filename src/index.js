@@ -42,7 +42,7 @@ const drawGauge = (props,key) => {
   padRad = 0 / (numSections - 1);
   chartInset = 10;
   totalPercent = 0.75;
-  el = d3.select(key);
+  el = d3.select(`.${key}`);
   margin = {
     top: 10,
     right: 0,
