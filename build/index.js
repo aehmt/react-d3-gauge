@@ -10240,7 +10240,7 @@ var Gauge = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.drawGauge(this.props, this.x);
+      this.drawGauge(this.props, this.state.key);
     }
   }, {
     key: 'render',
