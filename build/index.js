@@ -10086,6 +10086,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var randomId = Math.random().toString().split('.')[1];
+
 var drawGauge = function drawGauge(props) {
   var Needle = void 0,
       arc = void 0,
@@ -10126,7 +10128,7 @@ var drawGauge = function drawGauge(props) {
   padRad = 0 / (numSections - 1);
   chartInset = 10;
   totalPercent = 0.75;
-  el = d3.select('.fc822f8a-5edc-41ca-a557-93ec4b5970b7');
+  el = d3.select(randomId);
   margin = {
     top: 10,
     right: 0,
@@ -10240,7 +10242,7 @@ var Gauge = function (_Component) {
       return _react2.default.createElement(
         'span',
         null,
-        _react2.default.createElement('div', { style: { width: this.props.width, display: 'inline' }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
+        _react2.default.createElement('div', { style: { width: this.props.width, display: 'inline' }, className: randomId })
       );
     }
   }]);

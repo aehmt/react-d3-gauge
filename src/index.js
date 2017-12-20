@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
+const randomId = Math.random().toString().split('.')[1]
 
 const drawGauge = props => {
   let Needle,
@@ -42,7 +43,7 @@ const drawGauge = props => {
   padRad = 0 / (numSections - 1);
   chartInset = 10;
   totalPercent = 0.75;
-  el = d3.select('.fc822f8a-5edc-41ca-a557-93ec4b5970b7');
+  el = d3.select(randomId);
   margin = {
     top: 10,
     right: 0,
@@ -164,7 +165,7 @@ class Gauge extends Component {
   render() {
     return (
       <span>
-        <div style={{width: this.props.width, display: 'inline'}} className="fc822f8a-5edc-41ca-a557-93ec4b5970b7" />
+        <div style={{width: this.props.width, display: 'inline'}} className={ randomId } />
       </span>
     );
   }
