@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from 'd3';
-const randomId = Math.random()
 
 const drawGauge = props => {
   let Needle,
@@ -158,21 +157,14 @@ const drawGauge = props => {
 };
 
 class Gauge extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      key: Math.random().toString().split('.')[1]
-    }
-  }
-
   componentDidMount() {
-    drawGauge(this.props, this.x);
+    drawGauge(this.props);
   }
 
   render() {
     return (
       <span>
-        <div style={{width: this.props.width, display: 'inline'}} className={ this.state.key } />
+        <div style={{width: this.props.width, display: 'inline'}} className="fc822f8a-5edc-41ca-a557-93ec4b5970b7" />
       </span>
     );
   }

@@ -10086,8 +10086,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var randomId = Math.random();
-
 var drawGauge = function drawGauge(props) {
   var Needle = void 0,
       arc = void 0,
@@ -10225,21 +10223,16 @@ var drawGauge = function drawGauge(props) {
 var Gauge = function (_Component) {
   _inherits(Gauge, _Component);
 
-  function Gauge(props) {
+  function Gauge() {
     _classCallCheck(this, Gauge);
 
-    var _this = _possibleConstructorReturn(this, (Gauge.__proto__ || Object.getPrototypeOf(Gauge)).call(this, props));
-
-    _this.state = {
-      key: Math.random().toString().split('.')[1]
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (Gauge.__proto__ || Object.getPrototypeOf(Gauge)).apply(this, arguments));
   }
 
   _createClass(Gauge, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      drawGauge(this.props, this.x);
+      drawGauge(this.props);
     }
   }, {
     key: 'render',
@@ -10247,7 +10240,7 @@ var Gauge = function (_Component) {
       return _react2.default.createElement(
         'span',
         null,
-        _react2.default.createElement('div', { style: { width: this.props.width, display: 'inline' }, className: this.state.key })
+        _react2.default.createElement('div', { style: { width: this.props.width, display: 'inline' }, className: 'fc822f8a-5edc-41ca-a557-93ec4b5970b7' })
       );
     }
   }]);
