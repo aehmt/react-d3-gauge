@@ -158,7 +158,7 @@ class drawGauge {
     })();
 
     if (props.needle) {
-      needle = new Needle((height * 0.5) - barWidth, 5);
+      needle = new Needle((width * 0.5) - barWidth, 5);
       needle.drawOn(chart, 0);
       needle.animateOn(chart, percent);
     }
