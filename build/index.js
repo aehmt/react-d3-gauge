@@ -10149,7 +10149,7 @@ var drawGauge = function () {
 
       // width = el[0][0].offsetWidth - margin.left - margin.right;
       width = props.width;
-      height = width;
+      height = props.height;
       radius = Math.min(width, height) / 2;
 
       percToDeg = function percToDeg(perc) {
