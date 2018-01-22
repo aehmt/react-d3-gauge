@@ -10227,7 +10227,7 @@ var drawGauge = function () {
       }();
 
       if (props.needle) {
-        needle = new Needle(width * 0.5 - barWidth, 5);
+        needle = new Needle(width * 0.5 - barWidth, 3);
         needle.drawOn(chart, 0);
         needle.animateOn(chart, percent);
       }
